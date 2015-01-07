@@ -31,7 +31,8 @@ public class MediaPlayerWrapper {
 			instance = new MediaPlayerWrapper(context);
 		return instance;
 	}
-	
+
+	// Play Resource
 	public void playSound(int resid, MediaPlayer.OnCompletionListener listener)
 	{
 		try
@@ -46,6 +47,7 @@ public class MediaPlayerWrapper {
         }
 	}
 	
+	// Play file
 	public void playSound(String filepath, MediaPlayer.OnCompletionListener listener)
 	{
 		try

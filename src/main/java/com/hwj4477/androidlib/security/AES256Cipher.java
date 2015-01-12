@@ -1,5 +1,7 @@
 package com.hwj4477.androidlib.security;
 
+import android.util.Base64;
+
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -12,7 +14,12 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import android.util.Base64;
+/**
+ *
+ * @author hwj4477@gmail.com
+ * @since 14.12.10.
+ *
+ */
 
 public class AES256Cipher {
 

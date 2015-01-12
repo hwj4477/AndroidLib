@@ -1,2 +1,0 @@
-int drawable ic_launcher 0x7f020000
-int drawable spinner 0x7f020001

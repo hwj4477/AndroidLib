@@ -1,11 +1,5 @@
 package com.hwj4477.androidlib.utilities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,11 +22,17 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
 public class BitmapHelper {
 
-    public static Bitmap getBitmapFromResource(Context context, int rId)
+    public static Bitmap getBitmapFromResource(Context context, int rId, BitmapFactory.Options options)
     {
-        return BitmapFactory.decodeResource(context.getResources(), rId);
+        return BitmapFactory.decodeResource(context.getResources(), rId, options);
     }
 
 	public static Bitmap getCircularBitmap(Bitmap bitmap)

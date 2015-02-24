@@ -3,14 +3,13 @@ package com.hwj4477.androidlib.http;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import android.os.AsyncTask;
 
-public class AsyncHttpPost extends AsyncTask<String, String, String> {
+public class AsyncHttpGet extends AsyncTask<String, String, String> {
 	
 	/**
 	 * 
@@ -34,20 +33,14 @@ public class AsyncHttpPost extends AsyncTask<String, String, String> {
     	String strParam = params[1];
         
         try {
-            URL url = new URL(strUrl);
+            URL url = new URL(strUrl + "?" + strParam);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection(); 
             conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-            // Post Setting
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
+
             // Common
             conn.setDoInput(true);
             conn.setUseCaches(false);
             conn.setDefaultUseCaches(false);
-            
-            OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
-            osw.write(strParam);
-            osw.flush();  
             
             InputStreamReader tmp = new InputStreamReader(conn.getInputStream(), "UTF-8"); 
             BufferedReader reader = new BufferedReader(tmp); 

@@ -1,14 +1,11 @@
 package com.hwj4477.androidlib.utilities;
 
-import java.text.ParseException;
+import android.annotation.SuppressLint;
+
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-
-import android.annotation.SuppressLint;
-import android.util.Log;
 
 public class TimeHelper {
 	
@@ -94,9 +91,6 @@ public class TimeHelper {
     		toVal += Integer.parseInt(toString.nextToken());
     	}
     	
-    	Log.d("glotrek", "from : " + fromVal);
-		Log.d("glotrek", "toVal : " + toVal);
-    	
     	if(fromVal > toVal)
     	{
     		result = (long) (fromVal - toVal);
@@ -105,8 +99,6 @@ public class TimeHelper {
     	{
     		result = (long) (toVal - fromVal);
     	}
-    	
-    	Log.d("glotrek", "result : " + result);
     	
 		return result;
 	}

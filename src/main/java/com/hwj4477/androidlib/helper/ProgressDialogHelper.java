@@ -91,7 +91,7 @@ public class ProgressDialogHelper {
 		{
 			isLoading = false;
 			
-			loadingDialog.hide();
+			loadingDialog.dismiss();
 			
 			loadingDialog = null;
 		}

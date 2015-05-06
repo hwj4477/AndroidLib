@@ -24,8 +24,13 @@ import java.util.HashMap;
 public class SqliteWrapper {
 		
 	private SQLiteDatabase db = null;
-	
-	// Constructor
+
+    /**
+     * Constructor : Create sqlite file.
+     *
+     * @param dirPath
+     * @param fileName
+     */
 	public SqliteWrapper(String dirPath, String fileName)
 	{
 		File file = new File(dirPath);
@@ -36,8 +41,16 @@ public class SqliteWrapper {
 		
 		db = SQLiteDatabase.openOrCreateDatabase(dbFilePath, null);
 	}
-	
-	public SqliteWrapper(Context context, String dirPath, String fileName, String assetsFile)
+
+    /**
+     * Constructor : Init with assets file.
+     *
+     * @param context
+     * @param dirPath
+     * @param fileName
+     * @param assetsFile
+     */
+    public SqliteWrapper(Context context, String dirPath, String fileName, String assetsFile)
 	{
 		File file = new File(dirPath);
 		if(!file.exists())

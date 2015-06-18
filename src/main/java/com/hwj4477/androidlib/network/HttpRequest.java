@@ -49,23 +49,19 @@ public class HttpRequest {
         client.post(url, params, new AsyncHttpResponseHandler() {
 
             @Override
-            public void onSuccess(String response){
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
                 try {
-                    listener.getResult(responseID, response);
+                    listener.getResult(responseID, new String(responseBody));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(int arg0, Header[] arg1, byte[] arg2,
-                                  Throwable arg3) {
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
-                // TODO Auto-generated method stub
-                listener.error(responseID);
-
-                super.onFailure(arg0, arg1, arg2, arg3);
+                listener.failure(responseID);
             }
         });
     }
@@ -75,23 +71,18 @@ public class HttpRequest {
         client.get(url, params, new AsyncHttpResponseHandler() {
 
             @Override
-            public void onSuccess(String response){
-
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
-                    listener.getResult(responseID, response);
+                    listener.getResult(responseID, new String(responseBody));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(int arg0, Header[] arg1, byte[] arg2,
-                                  Throwable arg3) {
+            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
 
-                // TODO Auto-generated method stub
-                listener.error(responseID);
-
-                super.onFailure(arg0, arg1, arg2, arg3);
+                listener.failure(responseID);
             }
         });
     }
@@ -100,6 +91,6 @@ public class HttpRequest {
     public interface ResultListener
     {
         public void getResult(int responseID, Object result) throws JSONException;
-        public void error(int responseID);
+        public void failure(int responseID);
     }
 }

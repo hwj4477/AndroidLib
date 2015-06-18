@@ -8,10 +8,11 @@ import android.os.Handler;
 public class ProgressDialogHelper {
 
 	/**
-	 * 
+	 *
+	 * ProgressDialog Helper
+	 *
 	 * @author hwj4477@gmail.com
 	 * @since 14.5.20
-	 * 
 	 *
 	 */
 	

@@ -13,6 +13,7 @@ import org.json.JSONException;
 public class HttpRequest {
 
 	/**
+     * Simple HttpRequest
      *
 	 * @author hwj4477@gmail.com
 	 * @since 15.01.26
@@ -20,8 +21,6 @@ public class HttpRequest {
      *
      * @used library    : android-async-http.jar
      * @reference       : http://loopj.com/android-async-http/
-     *
-     * Simple HttpRequest
      *
 	 */
 	

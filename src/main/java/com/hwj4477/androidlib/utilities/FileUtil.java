@@ -1,12 +1,13 @@
 package com.hwj4477.androidlib.utilities;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 
 /**
  * 
@@ -17,7 +18,12 @@ import android.graphics.Bitmap.CompressFormat;
 
 public class FileUtil {
 
-	public static String getRootExternalStoragePath()
+	public static String internalStoragePath(Context context)
+	{
+		return context.getFilesDir().getAbsolutePath();
+	}
+
+	public static String externalStoragePath()
 	{
 		return android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
 	}

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * Sqlite Wrapper
  * 
  * @author hwj4477@gmail.com
  * @since 13.9.12.

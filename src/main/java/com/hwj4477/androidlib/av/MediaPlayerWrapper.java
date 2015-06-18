@@ -5,10 +5,10 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 
 /**
+ * MediaPlayer Wrapper
  * 
  * @author hwj4477@gmail.com
  * @since 13.9.10.
- * @update 13.11.12.
  *
  */
 
@@ -19,12 +19,13 @@ public class MediaPlayerWrapper {
 	private Context _context = null;
 	
 	private MediaPlayer player = null;
-	
-	private MediaPlayerWrapper(Context context)
-	{
-		_context = context;
-	}
-	
+
+	/**
+	 * Sington
+	 *
+	 * @param context
+	 * @return instance
+	 */
 	synchronized public static MediaPlayerWrapper getInstance(Context context)
 	{
 		if(instance == null)
@@ -32,7 +33,17 @@ public class MediaPlayerWrapper {
 		return instance;
 	}
 
-	// Play Resource
+	private MediaPlayerWrapper(Context context)
+	{
+		_context = context;
+	}
+
+	/**
+	 * Play Sound (from resource ID)
+	 *
+	 * @param resid
+	 * @param listener
+	 */
 	public void playSound(int resid, MediaPlayer.OnCompletionListener listener)
 	{
 		try
@@ -46,8 +57,13 @@ public class MediaPlayerWrapper {
         	e.printStackTrace();
         }
 	}
-	
-	// Play file
+
+	/**
+	 * Play Sound (from File Path)
+	 *
+	 * @param filepath
+	 * @param listener
+	 */
 	public void playSound(String filepath, MediaPlayer.OnCompletionListener listener)
 	{
 		try
@@ -63,7 +79,13 @@ public class MediaPlayerWrapper {
         	e.printStackTrace();
         }
 	}
-	
+
+	/**
+	 * Play Sound (from File Uri)
+	 *
+	 * @param fileuri
+	 * @param listener
+	 */
 	public void playSound(Uri fileuri, MediaPlayer.OnCompletionListener listener)
 	{
 		try
@@ -77,22 +99,10 @@ public class MediaPlayerWrapper {
         	e.printStackTrace();
         }
 	}
-	
-	public int getCurrentTime()
-	{
-		return player.getCurrentPosition() / 1000;
-	}
-	
-	public int getDuration()
-	{
-		return player.getDuration() / 1000;
-	}
-	
-	public void setCurrentTime(int time)
-	{
-		player.seekTo(time * 1000);
-	}
-	
+
+	/**
+	 * Stop
+	 */
 	synchronized public void stop()
 	{
 		try
@@ -118,7 +128,10 @@ public class MediaPlayerWrapper {
 			}
 		}
 	}
-	
+
+	/**
+	 * Pause
+	 */
 	synchronized public void pause()
 	{
 		try
@@ -136,7 +149,10 @@ public class MediaPlayerWrapper {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Resume
+	 */
 	synchronized public void resume()
 	{
 		try
@@ -153,5 +169,24 @@ public class MediaPlayerWrapper {
 		{
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * Helper.
+	 *
+	 */
+	public int getCurrentTime()
+	{
+		return player.getCurrentPosition() / 1000;
+	}
+	
+	public int getDuration()
+	{
+		return player.getDuration() / 1000;
+	}
+	
+	public void setCurrentTime(int time)
+	{
+		player.seekTo(time * 1000);
 	}
 }

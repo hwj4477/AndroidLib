@@ -16,6 +16,7 @@ public class HttpRequest {
      *
 	 * @author hwj4477@gmail.com
 	 * @since 15.01.26
+     * @update 15.06.18
      *
      * @used library    : android-async-http.jar
      * @reference       : http://loopj.com/android-async-http/
@@ -59,9 +60,12 @@ public class HttpRequest {
             }
 
             @Override
-            public void onFailure(int i, Header[] headers, byte[] bytes, Throwable throwable) {
+            public void onFailure(int arg0, Header[] arg1, byte[] arg2,
+                                  Throwable arg3) {
 
+                // TODO Auto-generated method stub
                 listener.failure(responseID);
+
             }
         });
     }

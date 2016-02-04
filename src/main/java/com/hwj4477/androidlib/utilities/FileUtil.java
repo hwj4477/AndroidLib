@@ -12,7 +12,9 @@ import java.io.OutputStream;
 /**
  * 
  * @author hwj4477@gmail.com
- * @since 13.9.10.
+ * @since 13.09.10
+ *
+ * @update 16.02.03
  *
  */
 
@@ -28,15 +30,15 @@ public class FileUtil {
 		return android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
 	}
 	
-	public static void saveBitmapToFile(Bitmap bitmap, String strFilePath)
+	public static File saveBitmapToFile(Bitmap bitmap, String strFilePath)
 	{
-		File fileCacheItem = new File(strFilePath);
+		File file = new File(strFilePath);
 		OutputStream out = null;
 		
 		try
 		{
-			fileCacheItem.createNewFile();
-			out = new FileOutputStream(fileCacheItem);
+			file.createNewFile();
+			out = new FileOutputStream(file);
 			
 			bitmap.compress(CompressFormat.JPEG, 100, out);
 		}
@@ -55,6 +57,8 @@ public class FileUtil {
 				e.printStackTrace();
 			}
 		}
+
+		return file;
 	}
 	
 	public static  boolean isExistFile(String strFilePath)

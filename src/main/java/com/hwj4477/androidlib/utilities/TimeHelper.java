@@ -7,6 +7,15 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+/**
+ * TimeHelper
+ *
+ * @author hwj4477@gmail.com
+ * @since 15.06.30
+ *
+ * @update 16.02.04
+ */
+
 public class TimeHelper {
 	
 	public static final String COMMON_FORMAT = "yyyy.MM.dd HH:mm:ss";

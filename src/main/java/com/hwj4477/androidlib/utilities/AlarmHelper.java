@@ -1,11 +1,18 @@
 package com.hwj4477.androidlib.utilities;
 
-import java.util.HashMap;
-
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+
+import java.util.HashMap;
+
+/**
+ * AlarmHelper
+ *
+ * @author hwj4477@gmail.com
+ *
+ */
 
 public class AlarmHelper {
 

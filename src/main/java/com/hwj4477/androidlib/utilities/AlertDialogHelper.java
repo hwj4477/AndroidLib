@@ -4,6 +4,13 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+/**
+ * AlertDialogHelper
+ *
+ * @author hwj4477@gmail.com
+ *
+ */
+
 public class AlertDialogHelper {
 	
 	public static String BUTTON_MESSAGE_OK = "OK";

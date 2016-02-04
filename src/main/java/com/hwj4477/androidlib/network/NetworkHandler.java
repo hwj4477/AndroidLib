@@ -1,4 +1,4 @@
-package com.stn.common.network;
+package com.hwj4477.androidlib.network;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -157,13 +157,6 @@ public class NetworkHandler {
             public void onFailure(int i, Header[] headers, Throwable throwable, File file) {
 
                 listener.failure();
-            }
-
-            @Override
-            public void onProgress(int bytesWritten, int totalSize) {
-                int progressPercentage = (int)100*bytesWritten / totalSize;
-
-                listener.onProgress(bytesWritten, totalSize);
             }
         });
     }

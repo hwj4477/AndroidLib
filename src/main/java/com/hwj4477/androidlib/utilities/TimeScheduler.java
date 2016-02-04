@@ -12,6 +12,7 @@ import java.util.TimerTask;
  * @author hwj4477@gmail.com
  * @since 15.06.30
  *
+ * @update 16.02.04
  */
 
 public class TimeScheduler {
@@ -40,6 +41,28 @@ public class TimeScheduler {
                     listener.handlerMessage(instance);
             }
         };
+    }
+
+    /**
+     * start
+     *
+     * @param delay
+     * @param listener
+     */
+    public void startScheduler(long delay, TimerScheduleListener listener)
+    {
+        if(timer == null)
+        {
+            timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    handler.sendEmptyMessage(0);
+                }
+            }, delay);
+
+            this.listener = listener;
+        }
     }
 
     /**

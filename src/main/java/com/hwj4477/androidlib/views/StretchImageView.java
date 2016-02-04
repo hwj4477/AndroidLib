@@ -32,10 +32,8 @@ public class StretchImageView extends ImageView
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
     {
-        // Call super() so that resolveUri() is called.
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        // If there's no drawable we can just use the result from super.
         if (getDrawable() == null)
             return;
 
@@ -49,13 +47,10 @@ public class StretchImageView extends ImageView
         if (h <= 0)
             h = 1;
 
-        // Desired aspect ratio of the view's contents (not including padding)
         float desiredAspect = (float) w / (float) h;
 
-        // We are allowed to change the view's width
         boolean resizeWidth = widthSpecMode != MeasureSpec.EXACTLY;
 
-        // We are allowed to change the view's height
         boolean resizeHeight = heightSpecMode != MeasureSpec.EXACTLY;
 
         int pleft = getPaddingLeft();
@@ -63,13 +58,11 @@ public class StretchImageView extends ImageView
         int ptop = getPaddingTop();
         int pbottom = getPaddingBottom();
 
-        // Get the sizes that ImageView decided on.
         int widthSize = getMeasuredWidth();
         int heightSize = getMeasuredHeight();
 
         if (resizeWidth && !resizeHeight)
         {
-            // Resize the width to the height, maintaining aspect ratio.
             int newWidth = (int) (desiredAspect * (heightSize - ptop - pbottom)) + pleft + pright;
             setMeasuredDimension(newWidth, heightSize);
         }

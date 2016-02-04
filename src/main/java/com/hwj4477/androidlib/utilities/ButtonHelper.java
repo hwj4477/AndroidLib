@@ -1,12 +1,19 @@
 package com.hwj4477.androidlib.utilities;
 
-import java.util.ArrayList;
-
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+
+import java.util.ArrayList;
+
+/**
+ * ButtonHelper
+ *
+ * @author hwj4477@gmail.com
+ *
+ */
 
 public class ButtonHelper {
 	

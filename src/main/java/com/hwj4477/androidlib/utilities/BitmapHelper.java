@@ -17,7 +17,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.ImageView;
@@ -27,6 +26,15 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
+/**
+ * BitmapHelper
+ *
+ * @author hwj4477@gmail.com
+ *
+ * @update 16.02.04
+ *
+ */
 
 public class BitmapHelper {
 
@@ -48,13 +56,11 @@ public class BitmapHelper {
 	    paint.setAntiAlias(true);
 	    canvas.drawARGB(0, 0, 0, 0);
 	    paint.setColor(color);
-	    // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
 	    canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
 	            bitmap.getWidth() / 2, paint);
 	    paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
 	    canvas.drawBitmap(bitmap, rect, rect, paint);
-	    //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
-	    //return _bmp;
+
 	    return output;
 	}
 	
@@ -90,21 +96,18 @@ public class BitmapHelper {
 	}
 	
 	public static Bitmap getBitmapFromView(View view) {
-        //Define a bitmap with the same size as the view
+
         Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(),Bitmap.Config.RGB_565);
-        //Bind a canvas to it
         Canvas canvas = new Canvas(returnedBitmap);
-        //Get the view's background
         Drawable bgDrawable =view.getBackground();
+
         if (bgDrawable!=null) 
-            //has background drawable, then draw it on the canvas
             bgDrawable.draw(canvas);
         else 
-            //does not have background drawable, then draw white background on the canvas
             canvas.drawColor(Color.WHITE);
-        // draw the view on the canvas
+
         view.draw(canvas);
-        //return the bitmap
+
         return returnedBitmap;
     }
 	
@@ -201,12 +204,45 @@ public class BitmapHelper {
 			e.printStackTrace();
 		}
 		
-		Log.d("glotrek", "file.getAbsolutePath() : " + file.getAbsolutePath());
-		
 		Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
         File f = new File(file.getAbsolutePath());
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         context.sendBroadcast(mediaScanIntent);
+	}
+
+	public static Bitmap resizeBitmap(String filePath, int rate) {
+
+		Bitmap bitmap = null;
+
+		int size = rate;
+
+		if(size < 2)
+			size = 2;
+
+		try {
+
+			while(true)
+			{
+				BitmapFactory.Options options = new BitmapFactory.Options();
+				options.inSampleSize = size;
+
+				try{
+
+					bitmap = BitmapFactory.decodeFile(filePath, options);
+
+					break;
+				}
+				catch (OutOfMemoryError e)
+				{
+					size *= 2;
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		return bitmap;
+
 	}
 }

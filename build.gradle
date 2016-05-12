@@ -18,5 +18,10 @@ android {
 }
 
 dependencies {
-    compile 'com.loopj.android:android-async-http:1.4.7'
+    // volley
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    // for multipart reuqest
+//    compile 'org.apache.httpcomponents:httpcore:4.3.2'
+//    compile 'org.apache.httpcomponents:httpmime:4.3.5'
+
 }

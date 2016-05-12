@@ -1,4 +1,4 @@
-package com.hwj4477.androidlib.network;
+package com.hwj4477.androidlib.network.util;
 
 import android.os.AsyncTask;
 import android.util.Log;
